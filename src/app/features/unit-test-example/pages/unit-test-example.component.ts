@@ -45,7 +45,14 @@ export class UnitTestExampleComponent {
       this.formGroup.markAllAsTouched();
       return;
     }
-    console.log('OK');
+
+    this.unitTestExampleService.submitForm(this.formGroup.value).subscribe({
+      next: (response) => (this.message = '表單提交成功'),
+      error: (error) => {
+        this.message = '表單提交失敗';
+        console.error('表單提交失敗:', error.message);
+      },
+    });
   }
 
   // 驗證電話號碼為10碼
