@@ -7,7 +7,7 @@ import { UnitTestRequest } from '../models/unit-test-request.model';
   providedIn: 'root',
 })
 export class UnitTestExampleService {
-  // json-server
+  // json-server CLI: json-server ./src/assets/mock/api/db.json
   private apiUrl = 'http://localhost:3000/submit';
 
   constructor(private http: HttpClient) {}
