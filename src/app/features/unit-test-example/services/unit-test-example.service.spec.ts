@@ -56,19 +56,19 @@ describe('UnitTestExampleService', () => {
     };
 
     service.submitForm(formData).subscribe({
-      next: () => fail('應該失敗'),
+      next: () => fail('應該是 500 狀態而失敗'),
       error: (error) => {
-        expect(error.status).toBeGreaterThanOrEqual(400); // toBeGreaterThanOrEqual: >=400
-        expect(error.message).toBeDefined();
+        expect(error.status).toBe(500);
       },
     });
 
-    const req = httpTestingController.expectOne('http://localhost:3000/submit');
+    const req = httpTestingController.expectOne(
+      'https://example.com/api/submit',
+    );
     expect(req.request.method).toBe('POST');
-    // 模擬錯誤回應的方式，400是假的
-    req.flush('Error', {
-      status: 400,
-      statusText: 'Bad Request',
+    req.flush('表單提交失敗', {
+      status: 500,
+      statusText: 'Server Error',
     });
   });
 });
