@@ -1,1 +1,66 @@
-<p>unit-test-example works!</p>
+<div>
+  <form [formGroup]="formGroup">
+    <div>
+      <label for="name">姓名</label>
+      <input
+        id="name"
+        formControlName="name"
+        type="text"
+        placeholder="請輸入姓名"
+        [ngClass]="{ 'input-error': formControlInvalid('name') }"
+      />
+      <small *ngIf="formControlInvalid('name')" class="error">
+        {{ showErrorMessage('name') }}
+      </small>
+    </div>
+    <div>
+      <label for="email">電子信箱</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        placeholder="請輸入電子信箱"
+        [ngClass]="{ 'input-error': formControlInvalid('email') }"
+      />
+      <small *ngIf="formControlInvalid('email')" class="error">
+        {{ showErrorMessage('email') }}
+      </small>
+      <div>
+        <label for="phone">電話號碼</label>
+        <input
+          id="phone"
+          formControlName="phone"
+          type="phone"
+          placeholder="請輸入電話號碼"
+          [ngClass]="{ 'input-error': formControlInvalid('phone') }"
+        />
+        <small *ngIf="formControlInvalid('phone')" class="error">
+          {{ showErrorMessage('phone') }}
+        </small>
+      </div>
+      <div>
+        <label for="gender">性別:</label>
+        <select id="gender" formControlName="gender">
+          <option *ngFor="let option of genderOptions" [value]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+      </div>
+      <div class="radio-group">
+        <div *ngFor="let option of foodKindOptions">
+          <input
+            type="radio"
+            id="kind"
+            formControlName="kind"
+            [value]="option.value"
+          />
+          <label for="{{ option.value }}">{{ option.label }}</label>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="submit" (click)="onSubmit()">送出</button>
+      </div>
+    </div>
+  </form>
+  <p>{{ message }}</p>
+</div>
