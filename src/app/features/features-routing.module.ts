@@ -14,6 +14,7 @@ const routes: Routes = [
         (m) => m.UnitTestExampleModule,
       ),
   },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
