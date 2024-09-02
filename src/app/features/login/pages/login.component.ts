@@ -44,7 +44,7 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error('Login failed', error);
-        alert('Invalid credentials'); // 顯示錯誤提示
+        alert('帳號密碼輸入錯誤');
       },
     });
   }

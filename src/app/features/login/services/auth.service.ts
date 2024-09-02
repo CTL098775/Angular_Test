@@ -13,12 +13,19 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(data: any): Observable<any> {
-    return this.http.post(this.apiUrl, data).pipe(
-      tap((response: any) => {
-        if (response && response.token) {
-          // 假設返回的 response 中有 token 字段
-          localStorage.setItem('token', response.token);
+    return this.http.get<any[]>(this.apiUrl).pipe(
+      tap((users) => {
+        // 在前端進行模擬驗證
+        const user = users.find(
+          (user) =>
+            user.username === data.username && user.password === data.password,
+        );
+
+        if (user) {
+          localStorage.setItem('token', 'mock-token'); // 存儲 token 到 localStorage
           this.loggedIn.next(true); // 更新登錄狀態
+        } else {
+          throw new Error('Invalid credentials');
         }
       }),
     );
