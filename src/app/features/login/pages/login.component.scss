@@ -16,6 +16,14 @@ form {
   height: 100vh;
 }
 
+body {
+  background-color: #e0e0e0; /* 這是淺灰色背景色，你可以根據需要調整為其他顏色 */
+  margin: 0; /* 移除默認邊距 */
+  padding: 0; /* 移除默認內邊距 */
+  box-sizing: border-box; /* 確保內外距的計算方式不影響元素大小 */
+  font-family: Arial, sans-serif; /* 設置全局字體（可選） */
+}
+
 label {
   display: block;
   margin-bottom: 8px;
@@ -23,6 +31,7 @@ label {
 }
 
 input[type='text'],
+input[type='password'],
 select {
   width: calc(100% - 20px);
   padding: 8px;
