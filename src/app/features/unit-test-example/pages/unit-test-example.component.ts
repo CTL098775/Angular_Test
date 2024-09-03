@@ -47,9 +47,11 @@ export class UnitTestExampleComponent {
     }
 
     this.unitTestExampleService.submitForm(this.formGroup.value).subscribe({
-      next: (response) => (this.message = '表單提交成功'),
+      next: (response) => {
+        alert('表單提交成功');
+      },
       error: (error) => {
-        this.message = '表單提交失敗';
+        alert('表單提交失敗');
         console.error('Error Submit:', error.message);
       },
     });

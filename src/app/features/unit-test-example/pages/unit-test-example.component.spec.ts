@@ -10,6 +10,7 @@ describe('UnitTestExampleComponent', () => {
   let fixture: ComponentFixture<UnitTestExampleComponent>;
   let service: UnitTestExampleService;
   let spyService: jasmine.Spy;
+  let alertSpy: jasmine.Spy;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -22,6 +23,7 @@ describe('UnitTestExampleComponent', () => {
     component = fixture.componentInstance;
     service = TestBed.inject(UnitTestExampleService);
     spyService = spyOn(service, 'submitForm').and.callThrough();
+    alertSpy = spyOn(window, 'alert');
     fixture.detectChanges();
   });
 
@@ -89,7 +91,7 @@ describe('UnitTestExampleComponent', () => {
 
     component.onSubmit();
     expect(spyService).toHaveBeenCalled();
-    expect(component.message).toBe('表單提交成功');
+    expect(alertSpy).toHaveBeenCalledWith('表單提交成功');
   });
 
   // 表單無效
@@ -100,7 +102,7 @@ describe('UnitTestExampleComponent', () => {
     component.onSubmit();
 
     expect(spyService).not.toHaveBeenCalled();
-    expect(component.message).toBe('');
+    expect(alertSpy).not.toHaveBeenCalled();
   });
 
   // 測試表單提交失敗
@@ -116,7 +118,7 @@ describe('UnitTestExampleComponent', () => {
 
     component.onSubmit();
     expect(spyService).toHaveBeenCalled();
-    expect(component.message).toBe('表單提交失敗');
+    expect(alertSpy).toHaveBeenCalledWith('表單提交失敗');
   });
 
   // 錯誤訊息顯示
