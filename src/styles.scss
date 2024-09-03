@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #44a1a0; /* 這裡替換成你想要的背景顏色 */
+  margin: 0; /* 移除預設的邊距 */
+  padding: 0; /* 移除預設的內邊距 */
+  height: 100%; /* 確保背景色覆蓋整個頁面高度 */
+}

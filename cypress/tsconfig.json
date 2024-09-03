@@ -4,6 +4,7 @@
     "**/*.ts",
     "../cypress.config.ts"
   ],
+  "exclude": [],
   "compilerOptions": {
     "sourceMap": false,
     "types": [
