@@ -50,11 +50,11 @@
         <div *ngFor="let option of foodKindOptions">
           <input
             type="radio"
-            id="kind"
+            [id]="'kind-' + option.value"
             formControlName="kind"
             [value]="option.value"
           />
-          <label for="{{ option.value }}">{{ option.label }}</label>
+          <label [for]="'kind-' + option.value">{{ option.label }}</label>
         </div>
       </div>
       <div class="button-container">
